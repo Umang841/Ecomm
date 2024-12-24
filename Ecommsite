@@ -1,0 +1,73 @@
+package fileprac;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ecom2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver;
+		String url="https://www.demoblaze.com/index.html";
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\umang\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe\\");
+		driver = new ChromeDriver();
+		driver.get(url);
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.linkText("Laptops")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.linkText("MacBook air")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.linkText("Add to cart")).click();
+		Thread.sleep(1500);
+		Alert alert=driver.switchTo().alert();
+		String alertmess=alert.getText();
+		System.out.println(alertmess);
+		driver.switchTo().alert().accept();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.linkText("Cart")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//button[@class='btn btn-success']")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("name")).sendKeys("Charu Srivastava");
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("country")).sendKeys("India");
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("city")).sendKeys("Lucknow");
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("card")).sendKeys("785166515");
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("month")).sendKeys("07");
+		Thread.sleep(1000);
+		
+		driver.findElement(By.id("year")).sendKeys("2026");
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//button[@onclick='purchaseOrder()']")).click();
+		Thread.sleep(1000);
+		
+		String mess1 = driver.findElement(By.xpath("/html/body/div[10]/h2")).getText();
+		System.out.println(mess1);
+		Thread.sleep(1000);
+		
+		String mess2 = driver.findElement(By.xpath("//p[@class='lead text-muted ']")).getText();
+		System.out.println(mess2);
+		driver.quit();
+		
+		
+		
+	}
+
+}
